@@ -101,21 +101,58 @@ def visualize_solution(initial_state, solution_state, algorithm_name):
     states = get_solution_states(solution_state)
     moves = get_solution_path(solution_state)
     
-    print(f"\n🎬 {algorithm_name} - Step-by-Step Solution:")
-    print("=" * 50)
+    print(f"\n🎬 {algorithm_name} - Complete Solution Path:")
+    print("=" * 80)
     
     # Show initial state
-    print(f"Step 0 - Initial State:")
+    print(f"Step 0: Initial")
     states[0].display()
     
-    # Show each move
+    # Show each move with compact display
     for i, move in enumerate(moves):
-        print(f"Step {i+1} - Move: {move}")
+        print(f"Step {i+1}: {move}")
         states[i+1].display()
-        input("Press Enter to continue to next step...")
     
     print(f"🎉 Solution completed in {len(moves)} steps!")
-    print("=" * 50)
+    print("=" * 80)
+
+def visualize_solution_compact(initial_state, solution_state, algorithm_name):
+    """Show compact side-by-side solution visualization"""
+    if solution_state is None:
+        print(f"❌ {algorithm_name}: No solution to visualize")
+        return
+    
+    states = get_solution_states(solution_state)
+    moves = get_solution_path(solution_state)
+    
+    print(f"\n🎬 {algorithm_name} - Compact Solution ({len(moves)} steps):")
+    print("=" * 80)
+    
+    # Display states in groups of 3 for better readability
+    for start_idx in range(0, len(states), 3):
+        end_idx = min(start_idx + 3, len(states))
+        
+        # Print step headers
+        step_headers = []
+        for idx in range(start_idx, end_idx):
+            if idx == 0:
+                step_headers.append(f"Step {idx}: Initial".center(20))
+            else:
+                step_headers.append(f"Step {idx}: {moves[idx-1]}".center(20))
+        
+        print("  ".join(step_headers))
+        
+        # Print board rows side by side
+        for row in range(3):  # 3x3 puzzle
+            row_displays = []
+            for idx in range(start_idx, end_idx):
+                board_row = str(states[idx].board[row]).replace('0', ' ')
+                row_displays.append(board_row.center(20))
+            print("  ".join(row_displays))
+        
+        print()  # Empty line between groups
+    
+    print("=" * 80)
 
 def breadth_first_search(initial_state, goal_state):
     if initial_state == goal_state:
@@ -334,14 +371,22 @@ def run_all_algorithms(initial_state, goal_state):
     show_steps = input("Would you like to see step-by-step solutions? (y/n): ").lower().strip()
     
     if show_steps == 'y' or show_steps == 'yes':
+        print("\nVisualization Options:")
+        print("1. Compact view (side-by-side)")
+        print("2. Detailed view (vertical)")
+        viz_choice = input("Choose visualization type (1/2): ").strip()
+        
         for name, solution_state in solution_states:
             if solution_state is not None:
                 print(f"\n{'='*70}")
-                choice = input(f"Show step-by-step for {name}? (y/n/q to quit): ").lower().strip()
+                choice = input(f"Show solution for {name}? (y/n/q to quit): ").lower().strip()
                 if choice == 'q' or choice == 'quit':
                     break
                 elif choice == 'y' or choice == 'yes':
-                    visualize_solution(initial_state, solution_state, name)
+                    if viz_choice == '1':
+                        visualize_solution_compact(initial_state, solution_state, name)
+                    else:
+                        visualize_solution(initial_state, solution_state, name)
 
 if __name__ == "__main__":
     print("🧩 Puzzle Game with 4 Search Algorithms 🧩")
