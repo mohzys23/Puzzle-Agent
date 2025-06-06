@@ -17,30 +17,6 @@ def get_solution_states(state):
         current = current.parent
     return states[::-1]
 
-def visualize_solution(initial_state, solution_state, algorithm_name):
-    """Show step-by-step solution visualization"""
-    if solution_state is None:
-        print(f"❌ {algorithm_name}: No solution to visualize")
-        return
-    
-    states = get_solution_states(solution_state)
-    moves = get_solution_path(solution_state)
-    
-    print(f"\n🎬 {algorithm_name} - Complete Solution Path:")
-    print("=" * 80)
-    
-    # Show initial state
-    print(f"Step 0: Initial")
-    states[0].display()
-    
-    # Show each move with compact display
-    for i, move in enumerate(moves):
-        print(f"Step {i+1}: {move}")
-        states[i+1].display()
-    
-    print(f"🎉 Solution completed in {len(moves)} steps!")
-    print("=" * 80)
-
 def visualize_solution_compact(initial_state, solution_state, algorithm_name):
     """Show compact side-by-side solution visualization"""
     if solution_state is None:
@@ -186,11 +162,6 @@ def run_all_algorithms(initial_state, goal_state):
     show_steps = input("Would you like to see step-by-step solutions? (y/n): ").lower().strip()
     
     if show_steps == 'y' or show_steps == 'yes':
-        print("\nVisualization Options:")
-        print("1. Compact view (side-by-side)")
-        print("2. Detailed view (vertical)")
-        viz_choice = input("Choose visualization type (1/2): ").strip()
-        
         for name, solution_state in solution_states:
             if solution_state is not None:
                 print(f"\n{'='*70}")
@@ -198,10 +169,7 @@ def run_all_algorithms(initial_state, goal_state):
                 if choice == 'q' or choice == 'quit':
                     break
                 elif choice == 'y' or choice == 'yes':
-                    if viz_choice == '1':
-                        visualize_solution_compact(initial_state, solution_state, name)
-                    else:
-                        visualize_solution(initial_state, solution_state, name)
+                    visualize_solution_compact(initial_state, solution_state, name)
 
 if __name__ == "__main__":
     print("🧩 Puzzle Game with 4 Search Algorithms 🧩")
