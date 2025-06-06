@@ -265,11 +265,11 @@ def greedy_best_first_search(initial_state, goal_state):
     return None, nodes_expanded, 0, None  # No solution found
 
 def create_puzzle():
-    # Easy puzzle (few moves to solve)
+    # Hard puzzle (many moves to solve)
     initial_board = [
-        [1, 8, 4],
-        [2, 7, 3],
-        [6, 5, 0]
+        [8, 6, 7],
+        [2, 5, 4],
+        [3, 0, 1]
     ]
     
     goal_board = [
@@ -302,7 +302,7 @@ def run_all_algorithms(initial_state, goal_state):
         start_time = time.time()
         
         if name == "Depth-First Search":
-            result = algorithm(initial_state, goal_state, max_depth=20)
+            result = algorithm(initial_state, goal_state, max_depth=50)
         else:
             result = algorithm(initial_state, goal_state)
         
