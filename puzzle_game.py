@@ -22,21 +22,26 @@ def run_all_algorithms(initial_state, goal_state):
         ("Greedy Best-First Search", greedy_best_first_search)
     ]
     
+    print(f"\n🧩 Running Nightmare Difficulty Puzzle - Ultimate Challenge!")
+    print("=" * 60)
     print("Initial State:")
     display_board(initial_state.board)
     print("Goal State:")
     display_board(goal_state.board)
-    print("=" * 50)
+    print("=" * 60)
     
     results = []
     solution_states = []
+    
+    # Use higher depth limit for this challenging puzzle
+    dfs_depth = 60
     
     for name, algorithm in algorithms:
         print(f"\n{name}:")
         start_time = time.time()
         
         if name == "Depth-First Search":
-            result = algorithm(initial_state, goal_state, max_depth=50)
+            result = algorithm(initial_state, goal_state, max_depth=dfs_depth)
         else:
             result = algorithm(initial_state, goal_state)
         
@@ -49,11 +54,11 @@ def run_all_algorithms(initial_state, goal_state):
             print(f"✅ Solution found!")
             print(f"Moves: {' -> '.join(path) if path else 'Already solved'}")
             print(f"Path length: {path_length}")
-            print(f"Nodes expanded: {nodes_expanded}")
+            print(f"Nodes expanded: {nodes_expanded:,}")
             print(f"Time taken: {execution_time:.4f} seconds")
         else:
             print(f"❌ No solution found within limits")
-            print(f"Nodes expanded: {nodes_expanded}")
+            print(f"Nodes expanded: {nodes_expanded:,}")
             print(f"Time taken: {execution_time:.4f} seconds")
         
         # Create result entry using utility function
@@ -66,6 +71,15 @@ def run_all_algorithms(initial_state, goal_state):
     # Use utility functions for formatting
     format_results_table(results)
     show_best_performers(results)
+    
+    # Show challenge analysis
+    print(f"\n🎯 NIGHTMARE CHALLENGE ANALYSIS:")
+    solved_count = sum(1 for r in results if r['solved'])
+    print(f"  Algorithms that conquered the challenge: {solved_count}/4")
+    if solved_count > 0:
+        avg_nodes = sum(r['nodes'] for r in results if r['solved']) / solved_count
+        print(f"  Average nodes explored: {avg_nodes:,.0f}")
+        print(f"  This is one of the most challenging 8-puzzle configurations!")
     
     # Ask user if they want to see step-by-step solutions
     print("\n" + "=" * 70)
@@ -82,8 +96,10 @@ def run_all_algorithms(initial_state, goal_state):
                     visualize_solution_compact(initial_state, solution_state, name)
 
 if __name__ == "__main__":
-    print("🧩 Puzzle Game with 4 Search Algorithms 🧩")
-    print("=" * 50)
+    print("🧩 Nightmare Puzzle Challenge - Ultimate 8-Puzzle Test! 🧩")
+    print("=" * 60)
+    print("🔥 Prepare for the most challenging 8-puzzle configuration!")
+    print("   This puzzle will test the limits of each search algorithm.")
     
     initial_state, goal_state = create_puzzle()
     run_all_algorithms(initial_state, goal_state) 

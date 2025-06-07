@@ -1,11 +1,13 @@
 from algorithms import PuzzleState, get_solution_path
 
 def create_puzzle():
-    """Create the standard test puzzle"""
+    """Create the ultimate 8-puzzle challenge - Nightmare difficulty"""
+    # This configuration is designed to be one of the hardest possible
+    # requiring extensive search to solve
     initial_board = [
-        [8, 6, 7],
-        [2, 5, 4],
-        [3, 0, 1]
+        [8, 7, 6],
+        [0, 4, 1],
+        [2, 5, 3]
     ]
     
     goal_board = [
@@ -15,6 +17,8 @@ def create_puzzle():
     ]
     
     return PuzzleState(initial_board), PuzzleState(goal_board)
+
+
 
 def get_solution_states(state):
     """Get all states in the solution path including initial state"""
