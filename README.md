@@ -53,7 +53,7 @@ Initial State:        Goal State:
 ## 📊 Example Output
 
 ```
-🧩 Running Nightmare Difficulty Puzzle - Ultimate Challenge!
+🧩 Running Difficult Puzzle - Ultimate Challenge!
 ============================================================
 
 Algorithm                 Steps    Nodes      Time (s)   Status
@@ -68,7 +68,7 @@ Depth-First Search        N/A      30,660     0.9802     ❌ Failed
   Fastest Time: Greedy Best-First Search (0.0044s)
   Most Efficient: Greedy Best-First Search (83 nodes expanded)
 
-🎯 NIGHTMARE CHALLENGE ANALYSIS:
+🎯 CHALLENGE ANALYSIS:
   Algorithms that conquered the challenge: 3/4
   Average nodes explored: 67,543
   This is one of the most challenging 8-puzzle configurations!
