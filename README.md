@@ -1,4 +1,4 @@
-# Nightmare Puzzle Challenge - Ultimate 8-Puzzle Test
+# Puzzle Challenge - Ultimate 8-Puzzle Test
 
 A modular sliding puzzle game featuring the most challenging 8-puzzle configuration, comparing 4 search algorithms at their limits.
 
@@ -38,6 +38,7 @@ Initial State:        Goal State:
 ```
 
 **Challenge Metrics:**
+
 - **30+ optimal moves** required to solve
 - **Extreme computational complexity** - tests algorithm limits
 - **Perfect for benchmarking** - separates efficient from inefficient algorithms
@@ -76,6 +77,7 @@ Depth-First Search        N/A      30,660     0.9802     ❌ Failed
 ## 🔧 Customization
 
 ### Create Custom Puzzles
+
 ```python
 from utils import PuzzleState
 
@@ -88,6 +90,7 @@ goal_state = PuzzleState(goal_board)
 ```
 
 ### Use Algorithms Separately
+
 ```python
 from algorithms import a_star_search, PuzzleState
 
@@ -103,6 +106,7 @@ path, nodes, steps, solution = a_star_search(initial_state, goal_state)
 ## 🎓 Academic Use
 
 The project includes `puzzle_game_report.ipynb` - a comprehensive Jupyter notebook with:
+
 - Complete algorithm implementations
 - Experimental results and analysis
 - Google Colab compatibility
@@ -119,7 +123,8 @@ The project includes `puzzle_game_report.ipynb` - a comprehensive Jupyter notebo
 ## 💡 Why This Configuration?
 
 This specific puzzle configuration is chosen because:
+
 - **Maximum Difficulty**: Requires 30+ moves to solve optimally
-- **Algorithm Stress Test**: Pushes each algorithm to its computational limits  
+- **Algorithm Stress Test**: Pushes each algorithm to its computational limits
 - **Clear Performance Differentiation**: Shows dramatic differences between informed vs uninformed search
 - **Research Validated**: Well-known in puzzle-solving literature as extremely challenging
