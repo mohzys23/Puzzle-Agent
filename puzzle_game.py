@@ -22,7 +22,7 @@ def run_all_algorithms(initial_state, goal_state):
         ("Greedy Best-First Search", greedy_best_first_search)
     ]
     
-    print(f"\n🧩 Running Nightmare Difficulty Puzzle - Ultimate Challenge!")
+    print(f"\n Running Difficult Puzzle - Ultimate Challenge!")
     print("=" * 60)
     print("Initial State:")
     display_board(initial_state.board)
@@ -73,7 +73,7 @@ def run_all_algorithms(initial_state, goal_state):
     show_best_performers(results)
     
     # Show challenge analysis
-    print(f"\n🎯 NIGHTMARE CHALLENGE ANALYSIS:")
+    print(f"\n🎯 CHALLENGE ANALYSIS:")
     solved_count = sum(1 for r in results if r['solved'])
     print(f"  Algorithms that conquered the challenge: {solved_count}/4")
     if solved_count > 0:
@@ -96,9 +96,9 @@ def run_all_algorithms(initial_state, goal_state):
                     visualize_solution_compact(initial_state, solution_state, name)
 
 if __name__ == "__main__":
-    print("🧩 Nightmare Puzzle Challenge - Ultimate 8-Puzzle Test! 🧩")
+    print("Puzzle Challenge - Ultimate 8-Puzzle Test! 🧩")
     print("=" * 60)
-    print("🔥 Prepare for the most challenging 8-puzzle configuration!")
+    print("Prepare for the most challenging 8-puzzle configuration!")
     print("   This puzzle will test the limits of each search algorithm.")
     
     initial_state, goal_state = create_puzzle()

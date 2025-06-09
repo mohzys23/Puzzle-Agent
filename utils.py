@@ -1,7 +1,7 @@
 from algorithms import PuzzleState, get_solution_path
 
 def create_puzzle():
-    """Create the ultimate 8-puzzle challenge - Nightmare difficulty"""
+    """Create the ultimate 8-puzzle challenge - difficult"""
     # This configuration is designed to be one of the hardest possible
     # requiring extensive search to solve
     initial_board = [
